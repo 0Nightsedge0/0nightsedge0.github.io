@@ -17,7 +17,7 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>[Kali] [Note] Kali Linux install Oracle Java</title>
+    <title>[Kali] [Note] Kali Linux install Oracle Java 8</title>
     <link href="https://0nightsedge0.github.io/2020/09/27/kali-linux-install-oracle-java8/"/>
     <id>https://0nightsedge0.github.io/2020/09/27/kali-linux-install-oracle-java8/</id>
     <published>2020-09-27T08:42:26.000Z</published>
@@ -42,7 +42,7 @@
     
       <category term="java8" scheme="https://0nightsedge0.github.io/tags/java8/"/>
     
-      <category term="Oracle java" scheme="https://0nightsedge0.github.io/tags/Oracle-java/"/>
+      <category term="Oracle java8" scheme="https://0nightsedge0.github.io/tags/Oracle-java8/"/>
     
   </entry>
   
