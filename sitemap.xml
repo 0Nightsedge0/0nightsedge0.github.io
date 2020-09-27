@@ -2,9 +2,30 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://0nightsedge0.github.io/2020/09/25/hello-world/</loc>
+    <loc>https://0nightsedge0.github.io/search/index.html</loc>
     
-    <lastmod>2020-09-25T10:47:21.405Z</lastmod>
+    <lastmod>2020-09-27T10:30:32.876Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://0nightsedge0.github.io/categories/index.html</loc>
+    
+    <lastmod>2020-09-27T08:15:13.605Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://0nightsedge0.github.io/tags/index.html</loc>
+    
+    <lastmod>2020-09-27T08:14:59.889Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://0nightsedge0.github.io/2020/09/27/kali-linux-install-oracle-java8/</loc>
+    
+    <lastmod>2020-09-26T16:00:00.000Z</lastmod>
     
   </url>
   
