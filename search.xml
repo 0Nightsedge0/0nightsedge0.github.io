@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search> 
+  
+  
+    
+    <entry>
+      <title>[Web] Damn Vulnerable Web Application (DVWA) Study - 0 - Environment</title>
+      <link href="2020/09/28/web-DVWA-Study-0-Env/"/>
+      <url>2020/09/28/web-DVWA-Study-0-Env/</url>
+      
+        <content type="html"><![CDATA[<h2 id="0x01-Download-amp-install"><a href="#0x01-Download-amp-install" class="headerlink" title="0x01 Download &amp; install"></a>0x01 Download &amp; install</h2><p><a href="https://hub.docker.com/r/vulnerables/web-dvwa/">https://hub.docker.com/r/vulnerables/web-dvwa/</a></p><h2 id="0x02-Enironment-setting-analysis"><a href="#0x02-Enironment-setting-analysis" class="headerlink" title="0x02 Enironment setting analysis"></a>0x02 Enironment setting analysis</h2><blockquote><p>PHP function display_errors: <font color=red size=3><strong>Disabled</strong></font><br>PHP function safe_mode: <font color=red size=3><strong>Disabled</strong></font><br>PHP function allow_url_include: <font color=red size=3><strong>Disabled</strong></font><br>PHP function allow_url_fopen: <font color=green size=3>Enabled</font><br>PHP function magic_quotes_gpc: <font color=red size=3><strong>Disabled</strong></font><br>PHP module gd: Installed<br>PHP module mysql: Installed<br>PHP module pdo_mysql: Installed</p></blockquote><h3 id="PHP-function-display-errors"><a href="#PHP-function-display-errors" class="headerlink" title="PHP function display_errors"></a>PHP function display_errors</h3><blockquote><p>Never display error messages in production! (service info leakage)</p></blockquote><ul><li>Default: <font size=3> <strong>Off</strong> </font></li></ul><h3 id="PHP-function-safe-mode"><a href="#PHP-function-safe-mode" class="headerlink" title="PHP function safe_mode"></a>PHP function safe_mode</h3><blockquote><p>Block a list of risky functions, list: <a href="https://www.php.net/manual/en/features.safe-mode.functions.php">https://www.php.net/manual/en/features.safe-mode.functions.php</a></p></blockquote><ul><li>Noted that it was been <font color=red size=3>REMOVED after php 5.4(March 2012)</font>, so there is no meaning in this lab (php7)</li></ul><h3 id="PHP-function-allow-url-include"><a href="#PHP-function-allow-url-include" class="headerlink" title="PHP function allow_url_include"></a>PHP function allow_url_include</h3><blockquote><p>This option allows the use of URL-aware fopen wrappers with the following functions: include, include_once, require, require_once.</p></blockquote><ul><li>Related vulnerability: RFI (Remote File inclusion) and PHP Supported Protocols and Wrappers problem</li><li>Default: <font size=3> <strong>Off</strong> </font></li><li><font color=red size=3>Deprecated as of PHP 7.4.0.</font> =(</li></ul><h3 id="PHP-function-allow-url-fopen"><a href="#PHP-function-allow-url-fopen" class="headerlink" title="PHP function allow_url_fopen"></a>PHP function allow_url_fopen</h3><blockquote><p>This option enables the URL-aware fopen wrappers that enable accessing URL object like files.<br>“HTTP and FTP URLs with most of the functions that take a filename as a parameter”</p></blockquote><ul><li>Related vulnerability: RFI (Remote File inclusion)</li><li>Default: <font size=3> <strong>On</strong> </font></li></ul><h4 id="Noted-that"><a href="#Noted-that" class="headerlink" title="Noted that"></a>Noted that</h4><blockquote><p><font size=3> <strong>File inclusion vulnerability is based on in-correct usage of include, include_once, require and require_once functions.</strong> </font><br><font size=3> <strong>Disable allow_url_include and allow_url_fopen is not the root cause and can’t cure the file inclusion vulnerability.</strong> </font></p></blockquote><h3 id="PHP-function-magic-quotes-gpc"><a href="#PHP-function-magic-quotes-gpc" class="headerlink" title="PHP function magic_quotes_gpc"></a>PHP function magic_quotes_gpc</h3><blockquote><p>When on, all ‘ (single-quote), “ (double quote), \ (backslash) and NULL characters are escaped with a backslash automatically.</p></blockquote><ul><li>= addslashes()</li><li><font color=red size=3>DEPRECATED as of PHP 5.3.0 and REMOVED as of PHP 5.4.0</font></li></ul><h3 id="PHP-module-gd-Installed"><a href="#PHP-module-gd-Installed" class="headerlink" title="PHP module gd: Installed"></a>PHP module gd: Installed</h3><blockquote><p>Image Processing</p></blockquote><h3 id="PHP-module-mysql-Installed"><a href="#PHP-module-mysql-Installed" class="headerlink" title="PHP module mysql: Installed"></a>PHP module mysql: Installed</h3><blockquote><p>accessing mysql database </p></blockquote><h3 id="PHP-module-pdo-mysql-Installed"><a href="#PHP-module-pdo-mysql-Installed" class="headerlink" title="PHP module pdo_mysql: Installed"></a>PHP module pdo_mysql: Installed</h3><blockquote><p>driver of accessing mysql database<br>maybe used for prepared statements in this lab</p></blockquote><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">[User: www-data] Writable folder &#x2F;var&#x2F;www&#x2F;html&#x2F;hackable&#x2F;uploads&#x2F;: Yes</span><br><span class="line">[User: www-data] Writable file &#x2F;var&#x2F;www&#x2F;html&#x2F;external&#x2F;phpids&#x2F;0.6&#x2F;lib&#x2F;IDS&#x2F;tmp&#x2F;phpids_log.txt: Yes</span><br><span class="line">[User: www-data] Writable folder &#x2F;var&#x2F;www&#x2F;html&#x2F;config: Yes</span><br></pre></td></tr></table></figure><h3 id="Writable-Directory"><a href="#Writable-Directory" class="headerlink" title="Writable Directory"></a>Writable Directory</h3><ul><li>/var/www/html/hackable/uploads/</li><li>/var/www/html/config</li></ul><h3 id="Writeable-File"><a href="#Writeable-File" class="headerlink" title="Writeable File"></a>Writeable File</h3><ul><li>/var/www/html/external/phpids/0.6/lib/IDS/tmp/phpids_log.txt </li></ul><h3 id="To-Study"><a href="#To-Study" class="headerlink" title="To-Study"></a>To-Study</h3><ol><li>PHP function allow_url_include</li><li>PHP function allow_url_fopen</li><li>PHP function magic_quotes_gpc</li><li>pdo_mysql</li></ol><h3 id="More-Studies"><a href="#More-Studies" class="headerlink" title="More Studies"></a>More Studies</h3><blockquote><p>Recommended PHP settings<br><a href="https://cheatsheetseries.owasp.org/cheatsheets/PHP_Configuration_Cheat_Sheet.html">https://cheatsheetseries.owasp.org/cheatsheets/PHP_Configuration_Cheat_Sheet.html</a></p></blockquote><h2 id="0xff-後記"><a href="#0xff-後記" class="headerlink" title="0xff 後記"></a>0xff 後記</h2><p>筆者打算重溫各種web attack, 及對應各種attack作出分析及思想更多對應的方法。<br>同時重新學習一些基礎知識, 去鞏固自己的馬步。<br>以攻促防, 以防促攻, 去引導出更多更完善的想法, 而非打完就算了。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> web </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> web </tag>
+            
+            <tag> DVWA </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>[Kali] [Note] Kali Linux install Oracle Java 8</title>
+      <link href="2020/09/27/kali-linux-install-oracle-java8/"/>
+      <url>2020/09/27/kali-linux-install-oracle-java8/</url>
+      
+        <content type="html"><![CDATA[<p><code>Enironment: kali (2020-09-14)</code></p><h2 id="0x01-Download-Oracle-Java"><a href="#0x01-Download-Oracle-Java" class="headerlink" title="0x01 Download Oracle Java"></a>0x01 Download Oracle Java</h2><p>Link: <a href="https://www.oracle.com/java/technologies/javase-downloads.html">https://www.oracle.com/java/technologies/javase-downloads.html</a></p><h2 id="0x02-Login-Bugmenot"><a href="#0x02-Login-Bugmenot" class="headerlink" title="0x02 Login? Bugmenot!"></a>0x02 Login? Bugmenot!</h2><p>Link: <a href="http://bugmenot.com/">http://bugmenot.com/</a></p><h2 id="0x03-Uncompress-and-move-to-opt"><a href="#0x03-Uncompress-and-move-to-opt" class="headerlink" title="0x03 Uncompress and move to /opt:"></a>0x03 Uncompress and move to /opt:</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">tar xvf jdk-&#123;version&#125;.tar.gz</span><br><span class="line">mv jdk&#123;version&#125;/ /opt/</span><br><span class="line"><span class="built_in">cd</span> /opt</span><br></pre></td></tr></table></figure><h2 id="0x04-Change-your-jdk-to-oracle-jdk"><a href="#0x04-Change-your-jdk-to-oracle-jdk" class="headerlink" title="0x04 Change your jdk to oracle jdk"></a>0x04 Change your jdk to oracle jdk</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">update-alternatives --install /usr/bin/java java /opt/jdk&#123;version&#125;/bin/java 1</span><br><span class="line">update-alternatives --install /usr/bin/javac javac /opt/jdk&#123;version&#125;/bin/javac 1</span><br><span class="line">update-alternatives --<span class="built_in">set</span> java /opt/jdk&#123;version&#125;/bin/java</span><br><span class="line">update-alternatives --<span class="built_in">set</span> javac /opt/jdk&#123;version&#125;/bin/javac</span><br></pre></td></tr></table></figure><h2 id="0x05-Check-java-version"><a href="#0x05-Check-java-version" class="headerlink" title="0x05 Check java version"></a>0x05 Check java version</h2><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">java -version</span><br></pre></td></tr></table></figure><p><img src="https://res.cloudinary.com/nightsedge/image/upload/v1601201861/blog/Post_kali_java8/java_version_f5pbwj.png"></p><h2 id="0x06-Software-using-newer-java"><a href="#0x06-Software-using-newer-java" class="headerlink" title="0x06 Software using newer java?"></a>0x06 Software using newer java?</h2><h3 id="Example-BurpSuite"><a href="#Example-BurpSuite" class="headerlink" title="Example: BurpSuite"></a>Example: BurpSuite</h3><ul><li><p>Edit launcher</p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line"><span class="comment"># From</span></span><br><span class="line">sh -c <span class="string">&quot;java -jar /usr/bin/burpsuite&quot;</span></span><br><span class="line"><span class="comment"># To</span></span><br><span class="line">sh -c <span class="string">&quot;/usr/lib/jvm/java-1.11.0-openjdk-amd64/bin/java -jar /usr/bin/burpsuite&quot;</span></span><br></pre></td></tr></table></figure></li><li><p>Or switch the java version by <code>update-java-alternatives</code> -&gt; Go To Step 3</p></li></ul><h2 id="0xff-後記"><a href="#0xff-後記" class="headerlink" title="0xff 後記"></a>0xff 後記</h2><p>筆者本來想試試冰蝎<a href="https://github.com/rebeyond/Behinder">Behinder</a>才設定成java 8,<br>但總是在報錯誤, 真的頭大, 有時間再試試吧…..<br>希望試的時候是java 11 吧, 嘻嘻</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> kali linux </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> kali linux </tag>
+            
+            <tag> java8 </tag>
+            
+            <tag> Oracle java8 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+  
+  
+</search>
